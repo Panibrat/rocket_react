@@ -8,8 +8,8 @@ export const useData = () => {
     const [isLoading, setIsLoading] = useState(false);
     const fetchData = () => {
         setIsLoading(true);
-        // fetch('https://my.backend/api/data', {
-        fetch('http://192.168.1.4/data', {
+        fetch('https://my.backend/api/data', {
+        // fetch('http://192.168.1.4/data', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
