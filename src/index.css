@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --Primary: #2E2E2E;
+  --Secondary: #777;
+  --Tertiary: #666;
+  --Stroke: #EFEFEF;
+  --Middleground: #F7F7F7;
+  --Foreground: #FFF;
+  --Primary-Primary: #000;
+  --Primary-Primary-hover: #434343;
+  --Link-Link: #0A64EB;
+  --Link-Link-hover: #0150C8;
+  --Sematic-Green: #0D881F;
+  --Sematic-Green-dark: #0A771A;
+  --Sematic-Yellow: #FFD738;
+  --Sematic-Red: #E32B00;
+  --Sematic-Red-dark: #C13211;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+h1 {
+  color: var(--Primary);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+h2 {
+  color: var(--Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+h3 {
+  color: var(--Primary);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 153.846% */
+}
+
+a {
+  /*color: var(--Primary);*/
+  color: var(--Link-Link, #0A64EB);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  text-decoration-line: underline;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--Primary);
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  font-family: 'Noto Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

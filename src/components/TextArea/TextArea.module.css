@@ -1,0 +1,30 @@
+.content {
+  display: flex;
+}
+
+.textarea {
+  display: flex;
+  height: 264px;
+  width: 100%;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 2px solid var(--Stroke, #EFEFEF);
+  background: var(--Stroke, #EFEFEF);
+  color: var(--Primary-Primary, #000);
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.textarea:focus {
+  border: 2px solid var(--Primary-Primary, #000);
+}
+
+.textarea:disabled {
+  color: var(--Secondary, #777);
+}

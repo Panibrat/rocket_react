@@ -1,0 +1,40 @@
+.content {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeRecord {
+    display: flex;
+}
+
+.recordIcon {
+    color: var(--Sematic-Red, #E32B00);
+    margin-right: 4px;
+}
+
+.activeRecordIcon {
+    color: white;
+}
+
+.activeContent {
+    background: var(--Sematic-Red, #E32B00);
+
+    /* Top */
+    box-shadow: 0px 1px 8px 0px rgba(42, 42, 42, 0.08);
+    /*background: var(--Sematic-Red, #E32B00);*/
+}
+
+.activeText {
+    color: white;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #777777;
+}
+
+.rocketIcon {
+    color: white;
+    margin-left: 8px;
+}

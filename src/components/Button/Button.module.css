@@ -1,0 +1,87 @@
+/* Базові стилі для кнопки */
+.button {
+    display: flex;
+    height: 48px;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 9px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Типи кнопок */
+.primary {
+    background: var(--Primary-Primary, #000);
+    color: var(--Foreground);
+}
+
+.secondary {
+    background: var(--Foreground);
+    color: var(--Primary-Primary);
+    border-radius: 8px;
+    border: 2px solid var(--Primary-Primary, #000);
+}
+
+/* Стан disabled */
+.disabled {
+    border-radius: 8px;
+    background: var(--Tertiary, #666);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.secondary.disabled {
+    background: var(--Foreground);
+    color: var(--Secondary);
+    border: 2px solid var(--Secondary, #777);
+}
+
+.danger {
+    border: 2px solid var(--Sematic-Red, #E32B00);
+    background: var(--Foreground);
+    color: var(--Sematic-Red, #E32B00);
+}
+
+.danger.disabled {
+    background: var(--Foreground);
+    color: var(--Secondary);
+    border: 2px solid var(--Secondary, #777);
+}
+
+/* Стан hover */
+.button.danger:hover {
+    background: var(--Sematic-Red-dark, #C13211);
+    color: var(--Foreground, #FFF);
+    border: none;
+}
+
+/* Стан hover */
+.button:hover {
+    border-radius: 8px;
+    color: var(--Foreground);
+    background: var(--Primary-Primary-hover);
+}
+
+/* Стилі для тексту */
+.text {
+    margin: 0;
+    /*color: var(--Foreground, #FFF);*/
+}
+
+/* Якщо є іконка, то змінюємо розмір і відступи */
+.button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.icon {
+    fill: currentColor;  /* Використовуємо поточний колір */
+    width: 20px;
+    height: 20px;
+}

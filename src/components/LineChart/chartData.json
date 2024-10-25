@@ -1,0 +1,53 @@
+{
+  "data": [
+    {
+      "value": 5.1,
+      "time": 1,
+      "lineType": 'red',
+    },
+    {
+      "value": 22,
+      "time": 2,
+      "lineType": 'red',
+    },
+    {
+      "value": 12,
+      "time": 3,
+      "lineType": 'red',
+    },
+    {
+      "value": 13,
+      "time": 4,
+      "lineType": 'black',
+    },{
+      "value": 4.1,
+      "time": 5,
+      "lineType": 'black',
+    },
+    {
+      "value": 1,
+      "time": 6,
+      "lineType": 'black',
+    },
+    {
+      "value": 1,
+      "time": 7,
+      "lineType": 'dottedGrey',
+    },
+    {
+      "value": 1,
+      "time": 8,
+      "lineType": 'dottedGrey',
+    },
+    {
+      "value": 2,
+      "time": 9,
+      "lineType": 'dottedGrey',
+    },
+    {
+      "value": 4,
+      "time": 10,
+      "lineType": 'dottedGrey',
+    }
+  ]
+}

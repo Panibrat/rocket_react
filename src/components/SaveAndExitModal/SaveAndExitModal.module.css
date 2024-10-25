@@ -1,0 +1,76 @@
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /*padding: 16px;*/
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  /*background-color: rgba(184, 193, 193, 0.5);*/
+  background-color: rgba(184, 193, 193, 0.75);
+  z-index: 10;
+  padding-bottom: 96px;
+}
+
+.setup {
+  padding: 0 16px 16px;
+  background-color: var(--Foreground, #FFF);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  height: 32px;
+}
+
+.combinedField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  background-color: white;
+  z-index: 15;
+}
+
+.item {
+  height: 24px;
+}
+
+.value {
+  color: grey;
+}
+
+.buttonGroupContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 24px;
+  border-top: 1px solid var(--Stroke, #EFEFEF);
+  background-color: var(--Foreground, #FFF);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+  /*padding: 8px 0 8px;*/
+  justify-content: space-between;
+  /*background-color: #FFD738;*/
+}

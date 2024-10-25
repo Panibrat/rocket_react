@@ -1,0 +1,26 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    height: 32px;
+}
+
+.textLine {
+    display: flex;
+    align-items: center;
+}
+
+.close {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+}
+
+.hint, .optional {
+    color: var(--Secondary, #777);
+}
+.label {
+    margin-right: 4px;
+    color: var(--Primary-Primary, #000);
+}
