@@ -8,7 +8,7 @@ import {START_RECORD_URL} from "../../constants/urls";
 const FORM_ID = 'setupForm'
 
 export const SetupRecordingModal = ({show, onClose, onError}) => {
-    const { isLoading, isError, result, errorText, postData } = usePostData();
+    const { isLoading, isError, errorText, postData } = usePostData();
 
     const handleSetupSubmit = async (data) => {
         const body = {...data, state: 'R'}

@@ -15,7 +15,7 @@ import {RecordHeader} from "./components/RecordHeader/RecordHeader";
 import {CountdownControlPanel} from "./components/ControlPanels/CountdownControlPanel/CountdownControlPanel";
 import {getLineTypeByState} from "./utils/getLineTypeByState";
 import {usePostData} from "./hooks/usePostData";
-import {ABORT_URL, LAUNCH_ENGINE_URL, START_RECORD_URL} from "./constants/urls";
+import {ABORT_URL, LAUNCH_ENGINE_URL} from "./constants/urls";
 
 const chartData = [
   { value: 0, time: 0, lineType: 'dottedGrey' },

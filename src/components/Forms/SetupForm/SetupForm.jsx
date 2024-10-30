@@ -1,8 +1,5 @@
 import {useForm, useWatch, Controller} from "react-hook-form"
-import {Input} from "../../Input/Input";
-import {DropDown} from "../../DropDown/DropDown";
 import {DropdownControlled} from "../../Controlled/DropdownControlled/DropdownControlled";
-import {PercentageInput} from "../../PercentageInput/PercentageInput";
 import {PercentageInputControlled} from "../../Controlled/PercentageInputControlled/PercentageInputControlled";
 import {inputToNumberDataTransformer} from "../../../utils/inputToNumberDataTransformer";
 import {TextFieldControlled} from "../../Controlled/TextFieldControlled/TextFieldControlled";
@@ -14,7 +11,6 @@ import styles from "./SetupForm.module.css";
 import {useEffect} from "react";
 import {saveFormDataToLocalStorage} from "../../../utils/saveFormDataToLocalStorage";
 import {readFormDataFromLocalStorage} from "../../../utils/readFormDataFromLocalStorage";
-import {usePostData} from "../../../hooks/usePostData";
 
 const oxidizerDropdownOptions = [
     { value: 'kno3', label: 'KNO₃' },
@@ -62,9 +58,6 @@ export const SetupForm = ({id, onFormSubmit}) => {
     useEffect(() => {
         saveFormDataToLocalStorage(id, data)
     }, [data, id]);
-
-    // console.log('123_data', data);
-    // console.log('123_errors', formState.errors);
 
     const fileNameHint = `${data.fileName && data.fileName.length || 0}/8 latin characters, numbers`
 

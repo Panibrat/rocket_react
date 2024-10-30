@@ -9,7 +9,7 @@ import {SAVE_FORM_URL} from "../../constants/urls";
 const FORM_ID = 'saveForm'
 
 export const SaveAndExitModal = ({show, onClose, samplesCount, timeCount, onError}) => {
-    const { isLoading, isError, result, errorText, postData } = usePostData();
+    const { isLoading, isError, errorText, postData } = usePostData();
 
     if (!show) {
         return null;
