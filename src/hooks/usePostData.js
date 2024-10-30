@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {BASE_URL} from "../constants/urls";
 
 export const usePostData = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -6,14 +7,14 @@ export const usePostData = () => {
     const [data, setData] = useState(null);
     const [errorText, setErrorText] = useState(null);
 
-    const postData = async (body) => {
+    const postData = async (url, body) => {
         setIsLoading(true);
         setIsError(false);
         setData(null);
         setErrorText(null);
 
         try {
-            const response = await fetch('http://192.168.1.4/state', {
+            const response = await fetch(`${BASE_URL}${url}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

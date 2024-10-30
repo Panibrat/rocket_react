@@ -32,7 +32,7 @@ export const SetupForm = ({id, onFormSubmit}) => {
     const storedData = readFormDataFromLocalStorage(id);
     const defaultValues = {
         fileName: storedData.fileName || '',
-        engineDescription: storedData.engineDescription || '',
+        engineDesc: storedData.engineDesc || '',
         currentTime: formatDate(),
         fuelDropdown: storedData.fuelDropdown || fuelDropdownOptions[2],
         fuelPercentage: storedData.fuelPercentage || null,
@@ -48,7 +48,15 @@ export const SetupForm = ({id, onFormSubmit}) => {
     });
 
     const onSubmit = (data) => {
-        onFormSubmit(data);
+        const postData = {
+            fileName: data.fileName,
+            engineDesc: data.engineDesc,
+            propOxid: data.oxidizerDropdown.label,
+            propFuel: data.fuelDropdown.label,
+            propNote: data.propellantNotes,
+            currentTime: data.currentTime
+        }
+        onFormSubmit(postData);
     }
 
     useEffect(() => {
@@ -74,7 +82,7 @@ export const SetupForm = ({id, onFormSubmit}) => {
                     dataTransformer={inputToAsciiDataTransformer}
                 />
                 <TextFieldControlled
-                    name="engineDescription"
+                    name="engineDesc"
                     control={control}
                     label="Engine description"
                     hint="ASCII symbols"

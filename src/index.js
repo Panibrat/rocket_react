@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'; // Імпорт реєстрації сервіс-воркера
 
 
 async function enableMocking() {
@@ -24,6 +25,9 @@ enableMocking().then(() => {
             <App />
         </React.StrictMode>
     );
+
+    // Реєстрація Service Worker для PWA та офлайн-роботи
+    serviceWorkerRegistration.register();  // Додаємо цей виклик
 })
 
 // If you want to start measuring performance in your app, pass a function

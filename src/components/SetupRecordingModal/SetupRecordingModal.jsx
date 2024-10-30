@@ -1,37 +1,18 @@
-import classNames from 'classnames';
-
 import {Button} from "../Button/Button";
 import styles from './SetupRecordingModal.module.css';
-import {useRef, useState} from "react";
 import {LabelWithCloseButton} from "../LabelRow/LabelWithCloseButton/LabelWithCloseButton";
-import {TextField} from "../TextField/TextField";
-import {DropDown} from "../DropDown/DropDown";
-import {PercentageInput} from "../PercentageInput/PercentageInput";
 import {SetupForm} from "../Forms/SetupForm/SetupForm";
 import {usePostData} from "../../hooks/usePostData";
-
-const MAX_INPUT_LENGTH = 8;
+import {START_RECORD_URL} from "../../constants/urls";
 
 const FORM_ID = 'setupForm'
-
-const oxidizerDropdownOptions = [
-    { value: 'kno3', label: 'KNO₃' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
-
-const fuelDropdownOptions = [
-    { value: 'sucrose', label: 'Sucrose₃' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
 
 export const SetupRecordingModal = ({show, onClose, onError}) => {
     const { isLoading, isError, result, errorText, postData } = usePostData();
 
     const handleSetupSubmit = async (data) => {
         const body = {...data, state: 'R'}
-        await postData(body);
+        await postData(START_RECORD_URL, body);
 
         if (!isError) {
             onClose();
@@ -64,7 +45,6 @@ export const SetupRecordingModal = ({show, onClose, onError}) => {
               form={FORM_ID}
               width="100%"
               text="Start recording"
-              // onClick={handleRecording}
               iconName={isLoading ? "loading" : "record"}
               disabled={!!isLoading}
             />

@@ -1,15 +1,14 @@
 import {useEffect, useState} from "react";
-
-const FETCH_INTERVAL = 1000;
+import {FETCH_INTERVAL} from "../constants/times";
+import {BASE_URL, GET_DATA_URL} from "../constants/urls";
 
 export const useData = () => {
-    const [data, setData] = useState({value: 0});
+    const [data, setData] = useState({thrust: 0});
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const fetchData = () => {
         setIsLoading(true);
-        fetch('https://my.backend/api/data', {
-        // fetch('http://192.168.1.4/data', {
+        fetch(`${BASE_URL}${GET_DATA_URL}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

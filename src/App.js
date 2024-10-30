@@ -14,7 +14,8 @@ import {ControlPanelWrapper} from "./components/ControlPanelWrapper/ControlPanel
 import {RecordHeader} from "./components/RecordHeader/RecordHeader";
 import {CountdownControlPanel} from "./components/ControlPanels/CountdownControlPanel/CountdownControlPanel";
 import {getLineTypeByState} from "./utils/getLineTypeByState";
-import {postState} from "./utils/postState";
+import {usePostData} from "./hooks/usePostData";
+import {ABORT_URL, LAUNCH_ENGINE_URL, START_RECORD_URL} from "./constants/urls";
 
 const chartData = [
   { value: 0, time: 0, lineType: 'dottedGrey' },
@@ -49,11 +50,11 @@ function App() {
   // console.log('render???');
   const [showSetupRecordingModal, setShowSetupRecordingModal] = useState(false);
   const [showSaveAndExitModal, setShowSaveAndExitModal] = useState(false);
-  // const [showToast, setShowToast] = useState(true);
   const [buffer, setBuffer] = useState([]);
   const [toast, setToast] = useState(null);
 
   const {data, error, isLoading} = useData();
+  const { isLoading: isSendDataLoading, isError, result, errorText, postData } = usePostData();
 
   const handleCloseToast = () => {
     setToast(null);
@@ -67,7 +68,7 @@ function App() {
     setBuffer((chart) => {
       const lastRecord = chart.length && chart.slice(-1)[0];
       const newTime = lastRecord ? lastRecord.time + 1 : 0
-      return [...chart,  { value: data.value, time: newTime, lineType: getLineTypeByState(data.state)}].slice(-FRAMES);
+      return [...chart,  { value: data.thrust, time: newTime, lineType: getLineTypeByState(data.state)}].slice(-FRAMES);
     })
   }, [data]);
 
@@ -76,15 +77,25 @@ function App() {
     setShowSetupRecordingModal(true)
   };
 
-  const handleEngineLaunch = () => {
-    console.log('handleEngineLaunch'); // TODO: POST
-    postState('10');
+  const handleEngineLaunch = async () => {
+    const body = {state: '10'}
+    await postData(LAUNCH_ENGINE_URL, body);
+
+    if (isError) {
+      console.log('123_handleEngineLaunch_errorText', errorText);
+      // onError(errorText || 'Cannot reach server. Check connection and try again.');
+    }
   };
 
-  const handleAbortLaunch = () => {
-    console.log('handleAbortLaunch'); // TODO: POST
-    const state = Math.random() > 0.5 ? 'S' : '0';
-    postState(state);
+
+  const handleAbortLaunch = async () => {
+    const body = {state: 'S'}
+    await postData(ABORT_URL, body);
+
+    if (isError) {
+      console.log('123_handleAbortLaunch_errorText', errorText);
+      // onError(errorText || 'Cannot reach server. Check connection and try again.');
+    }
   };
 
   const handleOnSaveRecord = () => {
@@ -109,7 +120,7 @@ function App() {
             )
         }
         <div style={{padding: "16px"}}>
-          <DataItem description="Pressue" value={formatNumberToString(data.value, 2)} units="Pa/ms"/>
+          <DataItem description="Pressue" value={formatNumberToString(data.thrust, 2)} units="Pa/ms"/>
         </div>
         <LineChart data={buffer}/>
         {/*<LineChart data={chartData}/>*/}
@@ -124,8 +135,8 @@ function App() {
 
           <Content>
             <div>
-              <DataItem description="Measuring Rate" value={data.recordSpeed} units="Hz"/>
-              { recordMode && <DataItem description="Measurments" value={data.samplesCount} units="samples"/> }
+              <DataItem description="Measuring Rate" value={data.rate} units="Hz"/>
+              { recordMode && <DataItem description="Measurments" value={data.samples} units="samples"/> }
               <DataItem description="Web refrash Rate" value="10" units="Hz"/>
             </div>
           </Content>
@@ -146,14 +157,15 @@ function App() {
                         text="Initiate engine launch"
                         onClick={handleEngineLaunch}
                         width="100%"
-                        iconName="rocket"
+                        iconName={isSendDataLoading ? "loading" : "rocket"}
+                        disabled={!!isSendDataLoading}
                     />
                 )
             }
 
           </ControlPanelWrapper>
           {
-              countDownMode && <CountdownControlPanel onClick={handleAbortLaunch} count={data.state} />
+              countDownMode && <CountdownControlPanel onClick={handleAbortLaunch} count={data.state} loading={isSendDataLoading}/>
           }
           <SetupRecordingModal
               onError={handleSetErrorToast}
@@ -161,7 +173,7 @@ function App() {
               onClose={() => setShowSetupRecordingModal(false)}/>
           <SaveAndExitModal
               show={showSaveAndExitModal}
-              samplesCount={data.samplesCount}
+              samplesCount={data.samples}
               timeCount={data.time}
               onClose={() => setShowSaveAndExitModal(false)}/>
         </div>

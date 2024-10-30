@@ -1,7 +1,7 @@
 import {Button} from "../../Button/Button";
 import styles from './CountdownControlPanel.module.css';
 import {ControlPanelWrapper} from "../../ControlPanelWrapper/ControlPanelWrapper";
-export const CountdownControlPanel = ({onClick, count}) => {
+export const CountdownControlPanel = ({onClick, count, loading}) => {
     return (
         <ControlPanelWrapper className={styles.panel}>
             <div className={styles.container}>
@@ -10,7 +10,8 @@ export const CountdownControlPanel = ({onClick, count}) => {
                     text="Abort launch"
                     onClick={onClick}
                     width="100%"
-                    iconName="abort"
+                    iconName={loading ? "loading" : "rocket"}
+                    disabled={!!loading}
                 />
             </div>
         </ControlPanelWrapper>

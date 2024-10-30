@@ -8,13 +8,12 @@ import {saveFormDataToLocalStorage} from "../../../utils/saveFormDataToLocalStor
 export const SaveForm = ({id, onFormSubmit, disabled}) => {
     const storedData = readFormDataFromLocalStorage(id);
     const defaultValues = {
-        studyNotes: storedData.studyNotes || ''
+        studyNote: storedData.studyNote || ''
     };
     const { handleSubmit, control } =
         useForm({ defaultValues });
     const onSubmit = (data) => {
-        onFormSubmit(true);
-        console.log('12345_form data', data);
+        onFormSubmit(data);
     }
 
     const data = useWatch({
@@ -31,7 +30,7 @@ export const SaveForm = ({id, onFormSubmit, disabled}) => {
                 <LabelWithCloseButton label="Study notes" optional="(optional)" hint="ASCII symbols"/>
                 <TextAreaControlled
                     control={control}
-                    name="studyNotes"
+                    name="studyNote"
                     placeholder=""
                     disabled={disabled}
                 />
