@@ -36,7 +36,7 @@ const dropDownStyles = {
       }
     };
   },
-  menu: (styles, state) => {
+  menu: (styles) => {
     // console.log('menu_styles', styles);
     // console.log('menu_state', state);
     return {
@@ -58,7 +58,7 @@ const dropDownStyles = {
   //         }
   //     );
   // },
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+  option: (styles) => {
     return {
       ...styles,
       padding: 0,

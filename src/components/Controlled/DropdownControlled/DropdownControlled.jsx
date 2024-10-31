@@ -14,7 +14,7 @@ export const DropdownControlled = ({
       name={name}
       control={control}
       rules={{ required: required }}
-      render={({ field: { onChange, onBlur, value }, formState: { errors } }) => (
+      render={({ field: { onChange, value }, formState: { errors } }) => (
         <DropDown
           options={options}
           error={errors[name] && 'Field is required?'}

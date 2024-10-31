@@ -1,4 +1,4 @@
-import { useForm, useWatch, Controller } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { DropdownControlled } from '../../Controlled/DropdownControlled/DropdownControlled';
 import { PercentageInputControlled } from '../../Controlled/PercentageInputControlled/PercentageInputControlled';
 import { inputToNumberDataTransformer } from '../../../utils/inputToNumberDataTransformer';
@@ -36,7 +36,7 @@ export const SetupForm = ({ id, onFormSubmit }) => {
     oxidizerPercentage: storedData.oxidizerPercentage || null,
     propellantNotes: storedData.propellantNotes || ''
   };
-  const { register, handleSubmit, control, formState } = useForm({ defaultValues });
+  const { handleSubmit, control, formState } = useForm({ defaultValues });
 
   const data = useWatch({
     control
