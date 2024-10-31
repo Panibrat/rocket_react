@@ -5,30 +5,29 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'; // Імпорт реєстрації сервіс-воркера
 
-
 async function enableMocking() {
-    if (process.env.NODE_ENV !== 'development') {
-        return
-    }
+  if (process.env.NODE_ENV !== 'development') {
+    return;
+  }
 
-    const { worker } = await import('./mocks/browser')
+  const { worker } = await import('./mocks/browser');
 
-    // `worker.start()` returns a Promise that resolves
-    // once the Service Worker is up and ready to intercept requests.
-    return worker.start()
+  // `worker.start()` returns a Promise that resolves
+  // once the Service Worker is up and ready to intercept requests.
+  return worker.start();
 }
 
 enableMocking().then(() => {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    );
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 
-    // Реєстрація Service Worker для PWA та офлайн-роботи
-    serviceWorkerRegistration.register();  // Додаємо цей виклик
-})
+  // Реєстрація Service Worker для PWA та офлайн-роботи
+  serviceWorkerRegistration.register(); // Додаємо цей виклик
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
