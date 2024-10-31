@@ -1,4 +1,3 @@
-import { DropDown } from '../../DropDown/DropDown';
 import { Controller } from 'react-hook-form';
 import { PercentageInput } from '../../PercentageInput/PercentageInput';
 
@@ -16,7 +15,7 @@ export const PercentageInputControlled = ({
       name={name}
       control={control}
       // rules={ { required: true, max: 100 } }
-      render={({ field: { onChange, onBlur, value }, formState: { errors } }) => (
+      render={({ field: { onChange, value } }) => (
         <PercentageInput
           width={width}
           maxLength={maxLength}

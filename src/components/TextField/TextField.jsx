@@ -41,3 +41,5 @@ export const TextField = forwardRef(
     );
   }
 );
+
+TextField.displayName = 'TextField';

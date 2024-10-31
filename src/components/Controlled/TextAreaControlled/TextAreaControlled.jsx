@@ -6,7 +6,7 @@ export const TextAreaControlled = ({ name, control, placeholder = '', disabled, 
     <Controller
       name={name}
       control={control}
-      render={({ field: { onChange, onBlur, value }, formState: { errors } }) => (
+      render={({ field: { onChange, value } }) => (
         <TextArea
           placeholder={placeholder}
           onChange={onChange}

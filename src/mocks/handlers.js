@@ -7,7 +7,7 @@ export const handlers = [
   http.get('https://my.backend/api/mesData', () => {
     return HttpResponse.json({
       time: getCurrentTimeFormatted(),
-      thrust: Math.random() * 30,
+      thrust: Math.random() * 99,
       state: 'S',
       // state: 'R',
       // state: '1',

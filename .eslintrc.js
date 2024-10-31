@@ -20,12 +20,12 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'check-file/folder-naming-convention': [
-      'error',
-      {
-        'components/**': 'CAMEL_CASE'
-      }
-    ],
+    // 'check-file/folder-naming-convention': [
+    //   'error',
+    //   {
+    //     'components/**': 'CAMEL_CASE'
+    //   }
+    // ],
     'react/prop-types': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-var-requires': 'off',

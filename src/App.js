@@ -17,31 +17,6 @@ import { getLineTypeByState } from './utils/getLineTypeByState';
 import { usePostData } from './hooks/usePostData';
 import { ABORT_URL, LAUNCH_ENGINE_URL } from './constants/urls';
 
-const chartData = [
-  { value: 0, time: 0, lineType: 'dottedGrey' },
-  { value: 5.1, time: 1, lineType: 'dottedGrey' },
-  { value: 22, time: 2.342423, lineType: 'dottedGrey' },
-  { value: 12, time: 3, lineType: 'dottedGrey' },
-  { value: 13, time: 4, lineType: 'black' },
-  { value: 4.1, time: 5, lineType: 'black' },
-  { value: 1, time: 6, lineType: 'black' },
-  { value: 5, time: 7, lineType: 'red' },
-  { value: 3, time: 8, lineType: 'red' },
-  { value: 8, time: 9, lineType: 'red' },
-  { value: 12, time: 10, lineType: 'red' },
-  { value: 18, time: 11, lineType: 'red' },
-  { value: 13, time: 12, lineType: 'red' },
-  { value: 28, time: 13, lineType: 'red' },
-  { value: 24, time: 14, lineType: 'red' },
-  { value: 13, time: 15, lineType: 'black' },
-  { value: 14.1, time: 16, lineType: 'black' },
-  { value: 10, time: 17, lineType: 'black' },
-  { value: 6, time: 18, lineType: 'dottedGrey' },
-  { value: 5.1, time: 19, lineType: 'dottedGrey' },
-  { value: 2, time: 20, lineType: 'dottedGrey' },
-  { value: 0, time: 21, lineType: 'dottedGrey' }
-];
-
 const FRAMES = 50;
 
 function App() {
@@ -51,8 +26,8 @@ function App() {
   const [buffer, setBuffer] = useState([]);
   const [toast, setToast] = useState(null);
 
-  const { data, error, isLoading } = useData();
-  const { isLoading: isSendDataLoading, isError, result, errorText, postData } = usePostData();
+  const { data } = useData();
+  const { isLoading: isSendDataLoading, isError, errorText, postData } = usePostData();
 
   const handleCloseToast = () => {
     setToast(null);

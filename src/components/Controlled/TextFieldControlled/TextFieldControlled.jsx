@@ -25,7 +25,7 @@ export const TextFieldControlled = ({
       name={name}
       control={control}
       rules={{ required: required, validate: validate }}
-      render={({ field: { onChange, onBlur, value }, formState: { errors } }) => (
+      render={({ field: { onChange, value }, formState: { errors } }) => (
         <TextField
           ref={inputRef}
           placeholder={placeholder}
