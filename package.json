@@ -1,6 +1,7 @@
 {
   "name": "rocket_react",
   "version": "0.1.0",
+  "homepage": "https://panibrat.github.io/rocket_react",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -22,7 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '{**,.**}/*.{js,ts,jsx,tsx}'",
-    "lint:fix": "eslint '{**,.**}/*.{js,ts,jsx,tsx}' --fix"
+    "lint:fix": "eslint '{**,.**}/*.{js,ts,jsx,tsx}' --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +54,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "gh-pages": "^6.2.0",
     "globals": "^15.9.0",
     "msw": "^2.4.9",
     "prettier": "^3.3.3"
