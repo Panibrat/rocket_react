@@ -1,7 +1,7 @@
 {
   "name": "rocket_react",
   "version": "0.1.0",
-  "homepage": "https://panibrat.github.io/rocket_react",
+  "homepage": "https://Panibrat.github.io/rocket_react",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
