@@ -1,7 +1,6 @@
 {
   "name": "rocket_react",
   "version": "0.1.0",
-  "homepage": "www.pavlo-starovoit.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
