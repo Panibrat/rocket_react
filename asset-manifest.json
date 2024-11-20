@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/www.pavlo-starovoit.com/static/css/main.08ed1743.css",
-    "main.js": "/www.pavlo-starovoit.com/static/js/main.29145de3.js",
-    "static/js/579.71c76bf2.chunk.js": "/www.pavlo-starovoit.com/static/js/579.71c76bf2.chunk.js",
-    "static/js/596.ca7410dd.chunk.js": "/www.pavlo-starovoit.com/static/js/596.ca7410dd.chunk.js",
-    "index.html": "/www.pavlo-starovoit.com/index.html",
-    "main.08ed1743.css.map": "/www.pavlo-starovoit.com/static/css/main.08ed1743.css.map",
-    "main.29145de3.js.map": "/www.pavlo-starovoit.com/static/js/main.29145de3.js.map",
-    "579.71c76bf2.chunk.js.map": "/www.pavlo-starovoit.com/static/js/579.71c76bf2.chunk.js.map",
-    "596.ca7410dd.chunk.js.map": "/www.pavlo-starovoit.com/static/js/596.ca7410dd.chunk.js.map"
+    "main.css": "/static/css/main.08ed1743.css",
+    "main.js": "/static/js/main.300cdf1a.js",
+    "static/js/579.71c76bf2.chunk.js": "/static/js/579.71c76bf2.chunk.js",
+    "static/js/596.3342be05.chunk.js": "/static/js/596.3342be05.chunk.js",
+    "index.html": "/index.html",
+    "main.08ed1743.css.map": "/static/css/main.08ed1743.css.map",
+    "main.300cdf1a.js.map": "/static/js/main.300cdf1a.js.map",
+    "579.71c76bf2.chunk.js.map": "/static/js/579.71c76bf2.chunk.js.map",
+    "596.3342be05.chunk.js.map": "/static/js/596.3342be05.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.08ed1743.css",
-    "static/js/main.29145de3.js"
+    "static/js/main.300cdf1a.js"
   ]
 }
