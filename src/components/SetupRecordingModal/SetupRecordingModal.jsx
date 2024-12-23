@@ -2,25 +2,33 @@ import { Button } from '../Button/Button';
 import styles from './SetupRecordingModal.module.css';
 import { LabelWithCloseButton } from '../LabelRow/LabelWithCloseButton/LabelWithCloseButton';
 import { SetupForm } from '../Forms/SetupForm/SetupForm';
-import { usePostData } from '../../hooks/usePostData';
 import { START_RECORD_URL } from '../../constants/urls';
+import { useMutateData } from '../../hooks/useMutateData';
+import { useEffect } from 'react';
 
 const FORM_ID = 'setupForm';
 
 export const SetupRecordingModal = ({ show, onClose, onError }) => {
-  const { isLoading, isError, errorText, postData } = usePostData();
+  const { isLoading, isError, errorText, mutate, data } = useMutateData();
 
-  const handleSetupSubmit = async (data) => {
+  const handleSetupSubmit = (data) => {
     const body = { ...data, state: 'R' };
-    await postData(START_RECORD_URL, body);
-
-    if (!isError) {
-      onClose();
-    } else {
-      console.log('123_errorText', errorText);
-      onError(errorText || 'Cannot reach server. Check connection and try again.');
-    }
+    mutate(START_RECORD_URL, body);
   };
+
+  useEffect(() => {
+    if (isError && errorText) {
+      onError(errorText);
+    }
+    // eslint-disable-next-line
+  }, [errorText, isError]);
+
+  useEffect(() => {
+    if (data && !isError && !isLoading) {
+      onClose();
+    }
+    // eslint-disable-next-line
+  }, [data, errorText, isError, isLoading]);
 
   if (!show) {
     return null;

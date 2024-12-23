@@ -1,4 +1,5 @@
 .inputWrapper {
+    flex: 1;
     display: flex;
     width: auto;
     height: 48px;
