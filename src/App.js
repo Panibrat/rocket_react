@@ -78,6 +78,10 @@ function App() {
     setShowSaveAndExitModal(true);
   };
 
+  const handleCloseSetupRecordingModal = () => {
+    setShowSetupRecordingModal(false);
+  };
+
   const standbyMode = data.state === 'S';
   const recordMode = data.state === 'R';
   const engineMode = data.state === '0';
@@ -94,11 +98,7 @@ function App() {
         />
       )}
       <div style={{ padding: '16px' }}>
-        <DataItem
-          description="Pressue"
-          value={formatNumberToString(data.thrust, 2)}
-          units="Pa/ms"
-        />
+        <DataItem description="Thrust" value={formatNumberToString(data.thrust, 2)} units="kg" />
       </div>
       <LineChart data={buffer} />
       {/*<LineChart data={chartData}/>*/}
@@ -110,9 +110,7 @@ function App() {
         <Content>
           <div>
             <DataItem description="Measuring Rate" value={data.rate} units="Hz" />
-            {recordMode && (
-              <DataItem description="Measurments" value={data.samples} units="samples" />
-            )}
+            <DataItem description="Measurments" value={data.samples} units="samples" />
             <DataItem description="Web refrash Rate" value="10" units="Hz" />
           </div>
         </Content>
@@ -145,7 +143,7 @@ function App() {
         <SetupRecordingModal
           onError={handleSetErrorToast}
           show={showSetupRecordingModal}
-          onClose={() => setShowSetupRecordingModal(false)}
+          onClose={handleCloseSetupRecordingModal}
         />
         <SaveAndExitModal
           show={showSaveAndExitModal}

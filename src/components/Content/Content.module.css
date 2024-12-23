@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 16px;
-  height: calc(100vh - 96px);
+  /*height: calc(100vh - 96px);*/
   overflow: auto;
+  margin-bottom: 48px;
 }

@@ -49,7 +49,7 @@ const LineChart = ({ data }) => {
       case 'dottedGrey':
         return '#777777';
       default:
-        return 'black';
+        return '#777777';
     }
   };
 

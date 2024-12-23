@@ -44,7 +44,7 @@ export const SetupForm = ({ id, onFormSubmit }) => {
 
   const onSubmit = (data) => {
     const postData = {
-      fileName: data.fileName,
+      fileName: `${data.fileName}.txt`,
       engineDesc: data.engineDesc,
       propOxid: data.oxidizerDropdown.label,
       propFuel: data.fuelDropdown.label,
@@ -92,14 +92,14 @@ export const SetupForm = ({ id, onFormSubmit }) => {
               control={control}
               options={oxidizerDropdownOptions}
               required={true}
-              width={160}
+              // width={160}
               disabled={false}
             />
             <PercentageInputControlled
               name="oxidizerPercentage"
               control={control}
               disabled={false}
-              width={160}
+              // width={160}
               maxLength={2}
               placeholder={'Percentage'}
               dataTransformer={inputToNumberDataTransformer}
@@ -115,14 +115,14 @@ export const SetupForm = ({ id, onFormSubmit }) => {
               control={control}
               options={fuelDropdownOptions}
               required={true}
-              width={160}
+              // width={160}
               disabled={false}
             />
             <PercentageInputControlled
               name="fuelPercentage"
               control={control}
               disabled={false}
-              width={160}
+              // width={160}
               maxLength={2}
               placeholder={'Percentage'}
               dataTransformer={inputToNumberDataTransformer}

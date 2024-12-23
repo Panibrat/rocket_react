@@ -1,5 +1,6 @@
 .wrapper {
   margin-bottom: 8px;
+  flex: 1;
 }
 
 .content {
