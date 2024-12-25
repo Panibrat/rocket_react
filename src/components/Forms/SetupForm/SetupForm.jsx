@@ -61,7 +61,7 @@ export const SetupForm = ({ id, onFormSubmit }) => {
   const fileNameHint = `${(data.fileName && data.fileName.length) || 0}/8 latin characters, numbers`;
 
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form id={id} onSubmit={handleSubmit(onSubmit)}>
         <TextFieldControlled
           name="fileName"
