@@ -16,6 +16,7 @@ import { CountdownControlPanel } from './components/ControlPanels/CountdownContr
 import { getLineTypeByState } from './utils/getLineTypeByState';
 import { usePostData } from './hooks/usePostData';
 import { ABORT_URL, LAUNCH_ENGINE_URL } from './constants/urls';
+import { FETCH_INTERVAL } from './constants/times';
 
 const FRAMES = 50;
 
@@ -87,6 +88,8 @@ function App() {
   const engineMode = data.state === '0';
   const countDownMode = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].includes(data.state);
 
+  const webRefreshRate = Number(1000 / FETCH_INTERVAL).toFixed(1);
+
   return (
     <>
       {(recordMode || countDownMode || engineMode) && (
@@ -111,7 +114,7 @@ function App() {
           <div>
             <DataItem description="Measuring Rate" value={data.rate} units="Hz" />
             <DataItem description="Measurments" value={data.samples} units="samples" />
-            <DataItem description="Web refrash Rate" value="10" units="Hz" />
+            <DataItem description="Web refresh Rate" value={webRefreshRate} units="Hz" />
           </div>
         </Content>
         <ControlPanelWrapper>
