@@ -5,11 +5,27 @@ import { SaveForm } from '../Forms/SaveForm/SaveForm';
 import { readFormDataFromLocalStorage } from '../../utils/readFormDataFromLocalStorage';
 import { usePostData } from '../../hooks/usePostData';
 import { SAVE_FORM_URL } from '../../constants/urls';
+import { useEffect } from 'react';
 
 const FORM_ID = 'saveForm';
 
-export const SaveAndExitModal = ({ show, onClose, samplesCount, timeCount, onError }) => {
-  const { isLoading, isError, errorText, postData } = usePostData();
+export const SaveAndExitModal = ({
+  show,
+  onClose,
+  samplesCount,
+  timeCount,
+  onError,
+  onSuccess
+}) => {
+  const { isLoading, isError, errorText, postData, result } = usePostData();
+
+  useEffect(() => {
+    const response = result && JSON.parse(result);
+    if (response && response.fileName) {
+      onSuccess(response.fileName);
+    }
+    // eslint-disable-next-line
+  }, [result]);
 
   if (!show) {
     return null;
@@ -22,7 +38,6 @@ export const SaveAndExitModal = ({ show, onClose, samplesCount, timeCount, onErr
     if (!isError) {
       onClose();
     } else {
-      console.log('123_errorText', errorText);
       onError && onError(errorText || 'Cannot reach server. Check connection and try again.');
     }
   };

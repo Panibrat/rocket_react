@@ -17,12 +17,14 @@ import { getLineTypeByState } from './utils/getLineTypeByState';
 import { usePostData } from './hooks/usePostData';
 import { ABORT_URL, LAUNCH_ENGINE_URL } from './constants/urls';
 import { FETCH_INTERVAL } from './constants/times';
+import { LoadingModal } from './components/LoadingModal/LoadingModal';
 
 const FRAMES = 50;
 
 function App() {
   // console.log('render???');
   const [showSetupRecordingModal, setShowSetupRecordingModal] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [showSaveAndExitModal, setShowSaveAndExitModal] = useState(false);
   const [buffer, setBuffer] = useState([]);
   const [toast, setToast] = useState(null);
@@ -48,6 +50,18 @@ function App() {
       ].slice(-FRAMES);
     });
   }, [data]);
+
+  useEffect(() => {
+    if (data.state !== 'S') {
+      setShowSetupRecordingModal(false);
+    }
+  }, [data.state]);
+
+  useEffect(() => {
+    if (data.firstLoad) {
+      setInitialLoading(false);
+    }
+  }, [data.firstLoad]);
 
   const handleSetupRecording = () => {
     console.log('handleSetupRecording');
@@ -83,6 +97,15 @@ function App() {
     setShowSetupRecordingModal(false);
   };
 
+  const handleCloseSaveAndExitModal = () => {
+    setShowSaveAndExitModal(false);
+  };
+
+  const handleSetSuccessSaving = (fileName) => {
+    const successMessage = `New “${fileName}” saved to SD card.`;
+    setToast({ type: 'success', description: successMessage });
+  };
+
   const standbyMode = data.state === 'S';
   const recordMode = data.state === 'R';
   const engineMode = data.state === '0';
@@ -92,6 +115,7 @@ function App() {
 
   return (
     <>
+      <LoadingModal show={initialLoading} />
       {(recordMode || countDownMode || engineMode) && (
         <RecordHeader
           timeText={data.time}
@@ -152,7 +176,8 @@ function App() {
           show={showSaveAndExitModal}
           samplesCount={data.samples}
           timeCount={data.time}
-          onClose={() => setShowSaveAndExitModal(false)}
+          onClose={handleCloseSaveAndExitModal}
+          onSuccess={handleSetSuccessSaving}
         />
       </div>
     </>

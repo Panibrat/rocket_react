@@ -3,7 +3,7 @@ import { FETCH_INTERVAL } from '../constants/times';
 import { BASE_URL, GET_DATA_URL } from '../constants/urls';
 
 export const useData = () => {
-  const [data, setData] = useState({ thrust: 0, state: 'S' });
+  const [data, setData] = useState({ thrust: 0, state: 'S', firstLoad: false });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fetchData = () => {
@@ -15,7 +15,7 @@ export const useData = () => {
       }
     })
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => setData({ ...data, firstLoad: true }))
       .catch((error) => {
         console.error('Error fetching data:', error);
         setError(error);

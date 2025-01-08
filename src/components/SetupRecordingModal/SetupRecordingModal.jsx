@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 const FORM_ID = 'setupForm';
 
 export const SetupRecordingModal = ({ show, onClose, onError }) => {
-  const { isLoading, isError, errorText, mutate, data } = useMutateData();
+  const { isLoading, isError, errorText, mutate } = useMutateData();
 
   const handleSetupSubmit = (data) => {
     const body = { ...data, state: 'R' };
@@ -22,13 +22,6 @@ export const SetupRecordingModal = ({ show, onClose, onError }) => {
     }
     // eslint-disable-next-line
   }, [errorText, isError]);
-
-  useEffect(() => {
-    if (data && !isError && !isLoading) {
-      onClose();
-    }
-    // eslint-disable-next-line
-  }, [data, errorText, isError, isLoading]);
 
   if (!show) {
     return null;
