@@ -16,20 +16,18 @@ import { CountdownControlPanel } from './components/ControlPanels/CountdownContr
 import { getLineTypeByState } from './utils/getLineTypeByState';
 import { usePostData } from './hooks/usePostData';
 import { ABORT_URL, LAUNCH_ENGINE_URL } from './constants/urls';
-import { FETCH_INTERVAL } from './constants/times';
 import { LoadingModal } from './components/LoadingModal/LoadingModal';
 
 const FRAMES = 50;
 
 function App() {
-  // console.log('render???');
   const [showSetupRecordingModal, setShowSetupRecordingModal] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
   const [showSaveAndExitModal, setShowSaveAndExitModal] = useState(false);
   const [buffer, setBuffer] = useState([]);
   const [toast, setToast] = useState(null);
 
-  const { data } = useData();
+  const { data, responseTime } = useData();
   const { isLoading: isSendDataLoading, isError, errorText, postData } = usePostData();
 
   const handleCloseToast = () => {
@@ -111,8 +109,6 @@ function App() {
   const engineMode = data.state === '0';
   const countDownMode = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].includes(data.state);
 
-  const webRefreshRate = Number(1000 / FETCH_INTERVAL).toFixed(1);
-
   return (
     <>
       <LoadingModal show={initialLoading} />
@@ -128,7 +124,6 @@ function App() {
         <DataItem description="Thrust" value={formatNumberToString(data.thrust, 2)} units="kg" />
       </div>
       <LineChart data={buffer} />
-      {/*<LineChart data={chartData}/>*/}
       <div className="App">
         {!!toast && (
           <Toast description={toast.description} type={toast.type} onClose={handleCloseToast} />
@@ -136,9 +131,9 @@ function App() {
 
         <Content>
           <div>
-            <DataItem description="Measuring Rate" value={data.rate} units="Hz" />
+            <DataItem description="Measuring Rate" value={data.rate} units="ms" />
             <DataItem description="Measurments" value={data.samples} units="samples" />
-            <DataItem description="Web refresh Rate" value={webRefreshRate} units="Hz" />
+            <DataItem description="Web refresh Rate" value={responseTime} units="ms" />
           </div>
         </Content>
         <ControlPanelWrapper>
