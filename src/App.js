@@ -134,6 +134,7 @@ function App() {
             <DataItem description="Measuring Rate" value={data.rate} units="ms" />
             <DataItem description="Measurments" value={data.samples} units="samples" />
             <DataItem description="Web refresh Rate" value={responseTime} units="ms" />
+            <DataItem description="Wi-Fi RSSI" value={data.rssi || 0} units="%" />
           </div>
         </Content>
         <ControlPanelWrapper>

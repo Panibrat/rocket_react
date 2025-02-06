@@ -3,7 +3,7 @@ import { FETCH_INTERVAL } from '../constants/times';
 import { BASE_URL, GET_DATA_URL } from '../constants/urls';
 
 export const useData = () => {
-  const [data, setData] = useState({ thrust: 0, state: 'S', firstLoad: false });
+  const [data, setData] = useState({ thrust: 0, state: 'S', firstLoad: false, rssi: 0 });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
